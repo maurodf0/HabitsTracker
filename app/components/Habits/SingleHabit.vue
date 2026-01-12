@@ -13,9 +13,7 @@ const emit = defineEmits<{
 </script>
 
 <template>
-<UCard  
-  variant="subtle" 
-  class="my-4 flex gap-4">
+<UCard variant="subtle" class="my-4 flex gap-4">
 <input 
   type="checkbox" 
   :checked="todayCompleted" 

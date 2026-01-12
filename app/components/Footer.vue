@@ -5,7 +5,9 @@
 <template>
   <UFooter>
     <template #left>
-      <p class="text-muted text-sm">Copyright © {{ new Date().getFullYear() }}</p>
+      <ClientOnly>
+        <p class="text-muted text-sm">Copyright © {{ new Date().getFullYear() }}</p>
+      </ClientOnly>
     </template>
 
    

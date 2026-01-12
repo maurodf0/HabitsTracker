@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import SingleHabit from '~/components/Habits/SingleHabit.vue';
+import type Habit from '~/shared/Habit';
+import SingleHabit from '~/components/Habits/SingleHabit.vue'
 
-const Habits = ref([
+const Habits = ref<Habit[]>([
   {
   title: 'Learn Vue',
   date: 2,
@@ -38,11 +39,15 @@ const handleClick = (index: number) => {
 <template>
   <div class="flex justify-between items-center mt-4">
     <h1 class="text-2xl font-medium">Good Morning, User</h1>
-    <div class="text-sm total"> {{ habitsCompleted.length }} / {{ Habits.length }}</div>
+    <div class="text-sm total"> {{ habitsCompleted.length }} / {{ Habits.length }} Completed</div>
   </div>
   
   <h3 class="textx-xl mt-4">Today's Habit</h3>
   <template v-for="(Habit, index) in Habits" :key="Habit.title">
-  <SingleHabit @toggle="handleClick(index)" :title="Habit.title" :date="Habit.date" :today-completed="Habit.todayCompleted"/>
+    <SingleHabit @toggle="handleClick(index)" :title="Habit.title" :date="Habit.date" :today-completed="Habit.todayCompleted"/>
   </template>
+
+  <h3 class="text-xl mb-2">Complete you day!</h3>
+    <UProgress v-model="habitsCompleted.length" :max="Habits.length"/>
+
 </template>
