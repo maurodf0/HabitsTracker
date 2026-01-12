@@ -3,7 +3,6 @@
 const props = defineProps<{
   title: string,
   date: number,
-  todayCompleted: boolean
 }>()
 
 </script>

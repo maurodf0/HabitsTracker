@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import SingleHabit from '~/components/Habits/SingleHabit.vue';
 
-const Habits = [
+const Habits = ref([
   {
   title: 'Learn Vue',
   date: 2,
-  todayCompleted: false
+  todayCompleted: true
 },
   {
   title: 'Go to Gym everyday',
   date: 11,
-  todayCompleted: false
+  todayCompleted: true
 },
   {
   title: 'Learn Nuxt',
@@ -22,19 +22,22 @@ const Habits = [
   date: 4,
   todayCompleted: false
 },
+]);
 
-
-
-] 
+const habitsCompleted = computed(() => {
+  return Habits.value.filter(h => h.todayCompleted === true);
+})
 
 </script>
 
 <template>
   <div class="flex justify-between items-center mt-4">
     <h1 class="text-2xl font-medium">Good Morning, User</h1>
-    <div class="text-sm total"> 0 / {{ Habits.length }}</div>
+    <div class="text-sm total"> {{ habitsCompleted.length }} / {{ Habits.length }}</div>
   </div>
   
   <h3 class="textx-xl mt-4">Today's Habit</h3>
-  <SingleHabit v-for="(Habit, index) in Habits" :title="Habit.title" :date="Habit.date" />
+  <template v-for="(Habit, index) in Habits" :key="Habit.title">
+  <SingleHabit :title="Habit.title" :date="Habit.date" />
+  </template>
 </template>
