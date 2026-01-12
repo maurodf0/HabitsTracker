@@ -32,7 +32,15 @@ const habitsCompleted = computed(() => {
 const handleClick = (index: number) => {
   if (Habits.value[index]) {
     Habits.value[index].todayCompleted = !Habits.value[index].todayCompleted
+    if(Habits.value[index].todayCompleted == true){
+      console.log('date');
+      Habits.value[index].date++
+    } else {
+      Habits.value[index].date--
+    }
+
   }
+
 }
 </script>
 
@@ -42,7 +50,12 @@ const handleClick = (index: number) => {
     <div class="text-sm total"> {{ habitsCompleted.length }} / {{ Habits.length }} Completed</div>
   </div>
   
-  <h3 class="textx-xl mt-4">Today's Habit</h3>
+  <div class="flex justify-between mt-4 items-center">
+    <h3 class="textx-xl">Today's Habit</h3>
+    <NuxtLink to="/add-task">
+        <span class="text-sm text-gray-500 italic">+ Add an habit</span>
+      </NuxtLink>
+  </div>
   <template v-for="(Habit, index) in Habits" :key="Habit.title">
     <SingleHabit @toggle="handleClick(index)" :title="Habit.title" :date="Habit.date" :today-completed="Habit.todayCompleted"/>
   </template>
