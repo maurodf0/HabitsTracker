@@ -1,2 +1,20 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+
+.dark {
+  --ui-bg: #111;
+}
+
+@theme static {
+  --ui-color-primary-50: #fff5eb;
+  --ui-color-primary-100: #ffe6cc;
+  --ui-color-primary-200: #ffcc99;
+  --ui-color-primary-300: #ffb366;
+  --ui-color-primary-400: #ff9933;
+  --ui-color-primary-500: #ff8000; /* arancione vivo */
+  --ui-color-primary-600: #cc6600;
+  --ui-color-primary-700: #994c00;
+  --ui-color-primary-800: #663300;
+  --ui-color-primary-900: #331900;
+  --ui-color-primary-950: #1a0d00;
+}
