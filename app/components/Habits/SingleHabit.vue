@@ -3,6 +3,11 @@
 const props = defineProps<{
   title: string,
   date: number,
+  todayCompleted: boolean
+}>()
+
+const emit = defineEmits<{
+  toggle: []
 }>()
 
 </script>
@@ -10,11 +15,15 @@ const props = defineProps<{
 <template>
 <UCard  
   variant="subtle" 
-  class="my-4 flex">
-<input type="checkbox" v-model="props.todayCompleted">
+  class="my-4 flex gap-4">
+<input 
+  type="checkbox" 
+  :checked="todayCompleted" 
+  @change="emit('toggle')"
+  class="w-5 h-5 cursor-pointer">
 <div class="flex flex-col">
 <h4 class="font-medium">{{ title }}</h4>
-<div class="flex"><small v-if="date > 5" class="text-[10px]">🔥</small> <small>  {{ date }} days Streak </small></div>
+<div class="flex gap-1"><span v-if="date > 5" class="text-xs">🔥</span> <small class="text-gray-500">{{ date }} days Streak</small></div>
 </div>
   </UCard>
 </template>
