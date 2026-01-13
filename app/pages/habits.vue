@@ -42,6 +42,18 @@ const handleClick = (index: number) => {
   }
 
 }
+
+const habitText = ref<string>('');
+
+const onSubmit = () => {
+  const newHabit = {
+    title: habitText.value,
+    date: 0,
+    todayCompleted: false
+  }
+
+  Habits.value.push(newHabit);
+}
 </script>
 
 <template>
@@ -51,10 +63,24 @@ const handleClick = (index: number) => {
   </div>
   
   <div class="flex justify-between mt-4 items-center">
+
     <h3 class="textx-xl">Today's Habit</h3>
-    <NuxtLink to="/add-task">
-        <span class="text-sm text-gray-500 italic">+ Add an habit</span>
-      </NuxtLink>
+
+    <UDrawer>
+    <UButton label="+ Add an habit" color="neutral" trailing-icon="i-lucide-chevron-up" />
+    <template #content>
+    <UForm class="space-y-4" @submit="onSubmit">
+      <UFormField label="Habit Name" name="Hab">
+        <UInput v-model="habitText" />
+      </UFormField>
+
+    <UButton type="submit">
+      Submit
+    </UButton>
+    </UForm>
+    </template>
+  </UDrawer>
+   
   </div>
   <template v-for="(Habit, index) in Habits" :key="Habit.title">
     <SingleHabit @toggle="handleClick(index)" :title="Habit.title" :date="Habit.date" :today-completed="Habit.todayCompleted"/>
