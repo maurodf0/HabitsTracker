@@ -44,8 +44,10 @@ const handleClick = (index: number) => {
 }
 
 const habitText = ref<string>('');
+const open = ref(false)
 
 const onSubmit = () => {
+
   const newHabit = {
     title: habitText.value,
     date: 0,
@@ -53,6 +55,8 @@ const onSubmit = () => {
   }
 
   Habits.value.push(newHabit);
+  habitText.value = '';
+  open.value = false;
 }
 </script>
 
@@ -66,7 +70,7 @@ const onSubmit = () => {
 
     <h3 class="textx-xl">Today's Habit</h3>
 
-    <UDrawer>
+    <UDrawer v-model:open="open">
     <UButton label="+ Add an habit" color="neutral" trailing-icon="i-lucide-chevron-up" />
     <template #content>
     <UForm class="space-y-4" @submit="onSubmit">
