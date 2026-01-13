@@ -73,7 +73,7 @@ const onSubmit = () => {
     <UDrawer v-model:open="open">
     <UButton label="+ Add an habit" color="neutral" trailing-icon="i-lucide-chevron-up" />
     <template #content>
-    <UForm class="space-y-4" @submit="onSubmit">
+    <UForm class="space-y-4 mx-auto py-4" @submit.prevent="onSubmit">
       <UFormField label="Habit Name" name="Hab">
         <UInput v-model="habitText" />
       </UFormField>
@@ -90,7 +90,7 @@ const onSubmit = () => {
     <SingleHabit @toggle="handleClick(index)" :title="Habit.title" :date="Habit.date" :today-completed="Habit.todayCompleted"/>
   </template>
 
-  <h3 class="text-xl mb-2">Complete you day!</h3>
+  <h3 class="text-xl mb-2">Complete your day!</h3>
     <UProgress v-model="habitsCompleted.length" :max="Habits.length"/>
 
 </template>
