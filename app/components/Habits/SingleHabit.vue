@@ -21,7 +21,8 @@ const emit = defineEmits<{
   class="w-5 h-5 cursor-pointer">
 <div class="flex flex-col">
 <h4 class="font-medium">{{ title }}</h4>
-<div class="flex gap-1"><span v-if="date >= 5" class="text-xs">🔥</span> <small class="text-gray-500">{{ date }} days Streak</small></div>
+<div class="flex gap-1">
+  <span v-if="date >= 5" class="text-xs">🔥</span> <small class="text-gray-500">{{ date }} days Streak</small></div>
 </div>
   </UCard>
 </template>

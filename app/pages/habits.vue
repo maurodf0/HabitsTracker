@@ -1,29 +1,9 @@
 <script setup lang="ts">
 import type Habit from '~/shared/Habit';
 import SingleHabit from '~/components/Habits/SingleHabit.vue'
+import UDrawerHabits from '~/components/UDrawerHabits.vue';
 
-const Habits = ref<Habit[]>([
-  {
-  title: 'Learn Vue',
-  date: 2,
-  todayCompleted: false
-},
-  {
-  title: 'Go to Gym everyday',
-  date: 11,
-  todayCompleted: false
-},
-  {
-  title: 'Learn Nuxt',
-  date: 9,
-  todayCompleted: false
-},
-  {
-  title: 'Eat Healty',
-  date: 4,
-  todayCompleted: false
-},
-]);
+const {Habits} = useHabits();
 
 const habitsCompleted = computed(() => {
   return Habits.value.filter(h => h.todayCompleted === true);
@@ -65,25 +45,22 @@ const onSubmit = () => {
     <h1 class="text-2xl font-medium">Good Morning, User</h1>
     <div class="text-sm total"> {{ habitsCompleted.length }} / {{ Habits.length }} Completed</div>
   </div>
+
+  <div 
+  class="mt-4 h-100 text-center mx-auto flex justify-center text-gray-700 items-center" 
+  v-if="Habits.length == 0">
+    <div class="flex flex-col gap-2 justify-center items-center">
+      <p class="mb-2 text-center">There's no Habit here, add more</p>
+     <UDrawerHabits @submit="onSubmit" />
+    </div>
+  </div>
   
+  <div v-else class="habits">
   <div class="flex justify-between mt-4 items-center">
 
     <h3 class="textx-xl">Today's Habit</h3>
 
-    <UDrawer v-model:open="open">
-    <UButton label="+ Add an habit" color="neutral" trailing-icon="i-lucide-chevron-up" />
-    <template #content>
-    <UForm class="space-y-4 mx-auto py-4" @submit.prevent="onSubmit">
-      <UFormField label="Habit Name" name="Hab">
-        <UInput v-model="habitText" />
-      </UFormField>
-
-    <UButton type="submit">
-      Submit
-    </UButton>
-    </UForm>
-    </template>
-  </UDrawer>
+      <UDrawerHabits @submit="onSubmit"/> 
    
   </div>
   <template v-for="(Habit, index) in Habits" :key="Habit.title">
@@ -93,4 +70,5 @@ const onSubmit = () => {
   <h3 class="text-xl mb-2">Complete your day!</h3>
     <UProgress v-model="habitsCompleted.length" :max="Habits.length"/>
 
+</div>
 </template>
