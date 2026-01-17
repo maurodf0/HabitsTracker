@@ -11,7 +11,7 @@ const emit = defineEmits(['submit'])
   <UDrawer v-model:open="open">
     <UButton label="+ Add an habit" color="neutral" trailing-icon="i-lucide-chevron-up" />
     <template #content>
-    <UForm class="space-y-4 mx-auto py-4" @submit.prevent="emit('submit')">
+    <UForm class="space-y-4 mx-auto py-4" @submit.prevent="emit('submit', habitText.value)">
       <UFormField label="Habit Name" name="Hab">
       <UInput v-model="habitText" />
     </UFormField>

@@ -26,16 +26,15 @@ const handleClick = (index: number) => {
 const habitText = ref<string>('');
 const open = ref(false)
 
-const onSubmit = () => {
+const onSubmit = (habitText) => {
 
   const newHabit = {
-    title: habitText.value,
+    title: habitText,
     date: 0,
     todayCompleted: false
   }
 
   Habits.value.push(newHabit);
-  habitText.value = '';
   open.value = false;
 }
 </script>
@@ -51,7 +50,7 @@ const onSubmit = () => {
   v-if="Habits.length == 0">
     <div class="flex flex-col gap-2 justify-center items-center">
       <p class="mb-2 text-center">There's no Habit here, add more</p>
-     <UDrawerHabits @submit="onSubmit" />
+     <UDrawerHabits @submit="onSubmit($event)" />
     </div>
   </div>
   
@@ -60,7 +59,7 @@ const onSubmit = () => {
 
     <h3 class="textx-xl">Today's Habit</h3>
 
-      <UDrawerHabits @submit="onSubmit"/> 
+      <UDrawerHabits @submit="onSubmit($event)"/> 
    
   </div>
   <template v-for="(Habit, index) in Habits" :key="Habit.title">
