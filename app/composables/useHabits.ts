@@ -10,8 +10,10 @@ export default function useHabits() {
 
 
   watch(Habits, () => {
+    console.log('useHabits watch');
     localStorage.setItem('Habits', JSON.stringify(Habits.value));
-  });
+  }, { deep: true });
+
 
   return {
     Habits,
