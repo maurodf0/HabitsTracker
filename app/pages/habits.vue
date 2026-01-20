@@ -29,6 +29,8 @@ console.log(Habits);
 const open = ref(false)
 
 const onSubmit = (habitText: string) => {
+  if(habitText == '') return;
+  if(habitText.length <= 0) return;
 
   const newHabit = {
     title: habitText,

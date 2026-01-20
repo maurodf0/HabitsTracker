@@ -13,8 +13,8 @@ const emit = defineEmits<{
 </script>
 
 <template>
-<UCard variant="subtle" class="my-4 flex gap-4">
-  <div class="input-wrapper flex gap-2">
+<div class="my-4 p-4 rounded-2xl flex items-center gap-4 bg-black/20">
+  <div class="input-wrapper flex items-center gap-4">
   <input 
     type="checkbox" 
     :checked="todayCompleted" 
@@ -25,8 +25,8 @@ const emit = defineEmits<{
   <div class="flex gap-1">
     <span v-if="date >= 5" class="text-xs">🔥</span> <small class="text-gray-500">{{ date }} days Streak</small></div>
   </div>
+  </div>
 </div>
-  </UCard>
 </template>
 
 <style scoped>
