@@ -18,12 +18,12 @@ const onSubmit = () => {
   <UDrawer v-model:open="open">
     <UButton label="+ Add an habit" color="neutral" trailing-icon="i-lucide-chevron-up" />
     <template #content>
-    <UForm class="space-y-4 mx-auto py-4" @submit.prevent="onSubmit"> 
+    <UForm class="space-y-4 mx-auto py-4 w-full px-4" @submit.prevent="onSubmit"> 
       <UFormField label="Habit Name" name="Hab">
-      <UInput v-model="habitText" />
+      <UInput class="w-full" v-model="habitText" />
     </UFormField>
 
-      <UButton type="submit">
+      <UButton class="w-full text-center mx-auto justify-center" type="submit">
         Submit
       </UButton>
     </UForm>
