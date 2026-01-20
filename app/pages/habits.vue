@@ -23,10 +23,9 @@ const handleClick = (index: number) => {
 
 }
 
-const habitText = ref<string>('');
 const open = ref(false)
 
-const onSubmit = (habitText) => {
+const onSubmit = (habitText: string) => {
 
   const newHabit = {
     title: habitText,
@@ -58,9 +57,7 @@ const onSubmit = (habitText) => {
   <div class="flex justify-between mt-4 items-center">
 
     <h3 class="textx-xl">Today's Habit</h3>
-
       <UDrawerHabits @submit="onSubmit($event)"/> 
-   
   </div>
   <template v-for="(Habit, index) in Habits" :key="Habit.title">
     <SingleHabit @toggle="handleClick(index)" :title="Habit.title" :date="Habit.date" :today-completed="Habit.todayCompleted"/>
