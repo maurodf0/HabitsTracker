@@ -69,9 +69,9 @@ const onSubmit = (habitText: string) => {
     </template>
     </div>
 
-<ClientOnly>
+
 <ProgressBar :habits="Habits" />
-   </ClientOnly>
+
 </div>
 </div>
 </template>
