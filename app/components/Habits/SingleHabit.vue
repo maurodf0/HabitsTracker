@@ -21,9 +21,12 @@ const emit = defineEmits<{
     @change="emit('toggle')"
     class="w-5 h-5 cursor-pointer">
   <div class="flex flex-col">
-  <h4 class="font-medium">{{ title }}</h4>
+ <h4 class="font-medium" :class="{ 'line-through opacity-55': todayCompleted }">{{ title }}</h4>
   <div class="flex gap-1">
-    <span v-if="date >= 5" class="text-xs">🔥</span> <small class="text-gray-500">{{ date }} days Streak</small></div>
+    <span 
+      v-if="date >= 5" class="text-xs">🔥</span> 
+      <small class="text-gray-500">{{ date }} days Streak</small>
+    </div>
   </div>
   </div>
 </div>

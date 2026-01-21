@@ -5,10 +5,7 @@ import UDrawerHabits from '~/components/UDrawerHabits.vue';
 
 const {Habits, habitsCompleted} = useHabits();
 
-console.log(
-  Habits.value,
-  habitsCompleted.value
-)
+
 
 const handleClick = (index: number) => {
   if (Habits.value[index]) {
@@ -29,8 +26,6 @@ console.log(Habits);
 const open = ref(false)
 
 const onSubmit = (habitText: string) => {
-  if(habitText == '') return;
-  if(habitText.length <= 0) return;
 
   const newHabit = {
     title: habitText,
@@ -73,6 +68,8 @@ const onSubmit = (habitText: string) => {
 
 
 <ProgressBar :habits="Habits" />
+
+
 
 </div>
 </div>

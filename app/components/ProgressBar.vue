@@ -10,9 +10,8 @@ const { Habits, habitsCompleted } = useHabits();
 <template>
   <div class="progress">
     <h3 class="text-xl mb-2">Complete your day!</h3>
-
     <UProgress
-      v-model="habitsCompleted.length"
+      :model-value="habitsCompleted.length"
       :max="Habits.length"
     />
   </div>
